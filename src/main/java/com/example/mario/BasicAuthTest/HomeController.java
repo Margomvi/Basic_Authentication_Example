@@ -16,7 +16,7 @@ public class HomeController {
     }
 
     @GetMapping("/public")
-    public String publicEndpoint(Model model) {
+    public String publicEndpoint() {
         return "OK";
     }
 }
