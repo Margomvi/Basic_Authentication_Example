@@ -22,7 +22,7 @@ public class BasicAuthTest {
     private MockMvc mockMvc;
 
     @Test
-    public void accesoConCredencialesCorrectasDevuelve200() throws Exception {
+    public void correctLoginCredentials() throws Exception {
         String authHeader = "Basic " + Base64.getEncoder().encodeToString("mario:123456".getBytes());
 
         mockMvc.perform(get("/")
@@ -31,7 +31,7 @@ public class BasicAuthTest {
     }
 
     @Test
-    void accesoConCredencialesIncorrectasDevuelve401() throws Exception {
+    void wrongLoginCredentials() throws Exception {
         mockMvc.perform(get("/")
                         .with(httpBasic("mario", "wrong")))
                 .andExpect(status().isUnauthorized());

@@ -8,10 +8,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-    @GetMapping("/")
+    @GetMapping("/login")
     public String home(Authentication authentication, Model model) {
         String username = authentication.getName();
         model.addAttribute("username", username);
         return "home";
+    }
+
+    @GetMapping("/public")
+    public String publicEndpoint(Model model) {
+        return "OK";
     }
 }
